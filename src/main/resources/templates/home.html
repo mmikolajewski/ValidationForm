@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .error {
+            color: red;
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+<div class="container m-5 shadow-lg p-3 mb-5 bg-body rounded">
+    <h1 class="text-center">Zarejestruj się</h1>
+    <form th:object="${newUser}" method="post" th:action="@{/form}" class="m-5" >
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="firstName">Imię</label>
+                <input type="text" id="firstName" class="form-control" th:field="*{firstName}" placeholder="Imię" />
+                <p th:errors="*{firstName}" class="error">Błąd</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="lastName">Nazwisko</label>
+                <input type="text" id="lastName" class="form-control" th:field="*{lastName}" placeholder="Nazwisko"  />
+                <p th:errors="*{lastName}" class="error">Błąd</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="address">Ulica, numer domu i mieszkania</label>
+        <input type="text" id="address" class="form-control" th:field="*{streetHouseNo}" placeholder="Wiejska 32a/4"  />
+        <p th:errors="*{streetHouseNo}" class="error">Błąd</p>
+    </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <label class="form-label" for="code">Kod pocztowy</label>
+                    <input type="text" id="code" class="form-control" th:field="*{zipCode}" placeholder="12-345"  />
+                    <p th:errors="*{zipCode}" class="error">Błąd</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <label class="form-label" for="town">Miasto</label>
+                    <input type="text" id="town" class="form-control" th:field="*{town}" placeholder="Miasto"  />
+                    <p th:errors="*{town}" class="error">Błąd</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="email">Adres email</label>
+        <input type="email" id="email" class="form-control" th:field="*{email}" placeholder="kotek@gmail.com"  />
+        <p class="small text-muted"> Nikomu nie udostępniamy Twojego adresu email</p>
+        <p th:errors="*{email}" class="error">Błąd</p>
+    </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="password">Hasło</label>
+            <input type="password" id="password" class="form-control" th:field="*{password}" placeholder="********"  />
+            <p th:errors="*{password}" class="error">Błąd</p>
+        </div>
+
+    <div class="d-flex mb-4">
+        <label class="form-check-label" for="terms"> Zgadzam się na warunki przedstawione w <a href="#">regulaminie</a></label>
+        <input class="form-check-input m-2 ml-0" type="checkbox" value="" id="terms" th:field="*{termsOfServiceAccepted}" checked />
+        <p th:errors="*{termsOfServiceAccepted}" class="error">Błąd</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Rejestruj</button>
+    </form>
+</div>
+<
+
+</body>
+</html>
